@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Anohter one for you baby</title>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
+<style>
+:root{--card:rgba(255,240,246,.62);--ink:#8a2a52;--soft:#b8497a;--edge:rgba(255,255,255,.75);box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--card:rgba(70,18,42,.55);--ink:#ffd3e6;--soft:#ffb0d0;--edge:rgba(255,200,225,.35)}}
+:root[data-theme="dark"]{--card:rgba(70,18,42,.55);--ink:#ffd3e6;--soft:#ffb0d0;--edge:rgba(255,200,225,.35)}
+html,body{height:100%;margin:0;overflow:hidden;background:#f7c6d8}
+#bg{position:fixed;inset:0;width:100%;height:100%}
+.veil{position:fixed;inset:0;background:radial-gradient(ellipse at center,rgba(255,235,243,.35),rgba(120,20,60,.28));pointer-events:none}
+main{position:relative;height:100%;display:flex;align-items:center;justify-content:center;padding:20px;box-sizing:border-box}
+.card{outline:1px solid var(--edge);outline-offset:-10px;max-width:520px;width:100%;text-align:center;padding:38px 28px 30px;border-radius:32px;background:var(--card);border:1px solid var(--edge);backdrop-filter:blur(14px) saturate(1.3);-webkit-backdrop-filter:blur(14px) saturate(1.3);box-shadow:0 30px 80px rgba(150,20,80,.35),inset 0 1px 0 rgba(255,255,255,.6);animation:rise 1.6s cubic-bezier(.2,.8,.2,1) both}
+@keyframes rise{from{opacity:0;transform:translateY(30px) scale(.96)}}
+.script{font-family:'Great Vibes','Snell Roundhand',cursive;color:var(--ink);line-height:1.15;margin:0}
+h1.script{font-size:clamp(40px,9vw,64px)}
+p{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:clamp(20px,4.6vw,26px);color:var(--soft);margin:14px 0 0;line-height:1.4}
+.mwa{font-size:clamp(34px,8vw,52px);margin-top:14px}
+.rule{display:flex;align-items:center;justify-content:center;gap:12px;margin:20px auto 4px}
+.rule i{height:1px;width:70px;background:linear-gradient(90deg,transparent,var(--soft))}
+.rule i:last-child{transform:scaleX(-1)}
+.rule b{width:8px;height:8px;transform:rotate(45deg);background:var(--soft);opacity:.8}
+.fall{position:fixed;pointer-events:none;z-index:5}
+.fall{top:-40px;width:18px;height:24px;border-radius:70% 0 70% 30%;background:linear-gradient(135deg,#ffd6e6,#ff9ec2);opacity:.85;animation:fall linear forwards}
+@keyframes fall{to{transform:translate(var(--dx),110vh) rotate(var(--r))}}
+</style>
+</head>
+<body>
+<svg id="bg" viewBox="0 0 1000 1000" preserveAspectRatio="xMidYMid slice" aria-hidden="true"></svg>
+<div class="veil"></div>
+<main>
+ <div class="card">
+  <h1 class="script">This flowers are all for you, my baby</h1>
+  <div class="rule"><i></i><b></b><i></i></div>
+  <p>I hope you like it,<br>because you deserve it.</p>
+  <div class="script mwa">mwamwaaa</div>
+ </div>
+</main>
+<script>
+(function(){
+var NS="http://www.w3.org/2000/svg",svg=document.getElementById("bg"),s=7;
+function R(){s=(s*16807)%2147483647;return (s-1)/2147483646}
+function E(n,a,p){var e=document.createElementNS(NS,n);for(var k in a)e.setAttribute(k,a[k]);(p||svg).appendChild(e);return e}
+var defs=E("defs",{});
+var tones=[["#c2336f","#f58fb8","#ffd9e8"],["#d4457f","#ff9fc3","#ffe6f0"],["#b02763","#ee7aa8","#ffc9de"],["#e0558f","#ffb3d0","#fff0f6"]];
+tones.forEach(function(t,i){var g=E("linearGradient",{id:"p"+i,x1:0,y1:1,x2:0,y2:0},defs);
+ [[0,t[0]],[.45,t[1]],[1,t[2]]].forEach(function(o){E("stop",{offset:o[0],"stop-color":o[1]},g)})});
+var lg=E("linearGradient",{id:"lf",x1:0,y1:1,x2:1,y2:0},defs);
+E("stop",{offset:0,"stop-color":"#2f5d3a"},lg);E("stop",{offset:1,"stop-color":"#7fb58a"},lg);
+var f=E("filter",{id:"sh",x:"-30%",y:"-30%",width:"160%",height:"160%"},defs);
+E("feDropShadow",{dx:0,dy:5,stdDeviation:7,"flood-color":"#6b0f3a","flood-opacity":.45},f);
+var f2=E("filter",{id:"sp"},defs);E("feDropShadow",{dx:0,dy:1.5,stdDeviation:1.4,"flood-color":"#7a1844","flood-opacity":.35},f2);
+E("rect",{width:1000,height:1000,fill:"#f3a9c6"});
+var bgd=E("radialGradient",{id:"bgd"},defs);E("stop",{offset:0,"stop-color":"#ffd3e4"},bgd);E("stop",{offset:1,"stop-color":"#c2477f"},bgd);
+E("rect",{width:1000,height:1000,fill:"url(#bgd)"});
+function petal(g,len,w,rot,tone,y){
+ var d="M0,0C"+(-w)+","+(-len*.3)+" "+(-w*1.15)+","+(-len*.85)+" "+(-w*.55)+","+(-len*.98)+
+ "C"+(-w*.35)+","+(-len*1.07)+" "+(-w*.1)+","+(-len*.97)+" 0,"+(-len*1.03)+
+ "C"+(w*.15)+","+(-len*.96)+" "+(w*.4)+","+(-len*1.08)+" "+(w*.55)+","+(-len*.98)+
+ "C"+(w*1.15)+","+(-len*.85)+" "+w+","+(-len*.3)+" 0,0Z";
+ var p=E("path",{d:d,fill:"url(#p"+tone+")",transform:"translate(0,"+(y||0)+") rotate("+rot+")",filter:"url(#sp)"},g);
+ E("path",{d:"M0,-"+(len*.15)+"Q"+(w*.1)+","+(-len*.6)+" 0,"+(-len*.92),stroke:"rgba(255,255,255,.35)","stroke-width":1.2,fill:"none",transform:"rotate("+rot+")"},g);
+}
+function leaf(x,y,sz,rot){
+ var g=E("g",{transform:"translate("+x+","+y+") rotate("+rot+")",filter:"url(#sh)"});
+ E("path",{d:"M0,0C"+(-sz*.5)+","+(-sz*.3)+" "+(-sz*.45)+","+(-sz*.8)+" 0,"+(-sz)+"C"+(sz*.45)+","+(-sz*.8)+" "+(sz*.5)+","+(-sz*.3)+" 0,0Z",fill:"url(#lf)"},g);
+ E("path",{d:"M0,0L0,"+(-sz*.95),stroke:"rgba(220,255,225,.5)","stroke-width":2,fill:"none"},g);
+}
+function peony(x,y,r){
+ var g=E("g",{transform:"translate("+x+","+y+") rotate("+(R()*360)+")",filter:"url(#sh)"});
+ var tone=Math.floor(R()*4);
+ var rings=[[9,1,1.0],[8,1,.9],[8,2,.78],[7,2,.64],[6,3,.5],[5,3,.36],[5,2,.24],[4,3,.14]];
+ rings.forEach(function(rg,i){
+  var n=rg[0],off=R()*360;
+  for(var k=0;k<n;k++){
+   var len=r*rg[2]*(.9+R()*.2),w=len*(.52+R()*.14);
+   petal(g,len,w,off+k*360/n+(R()-.5)*14,Math.min(3,Math.max(0,tone+(i>4?1:0))),i<2?0:-len*.02);
+  }
+ });
+ E("circle",{r:r*.07,fill:"#c2336f",opacity:.8},g);
+ if(R()>.55){for(var j=0;j<14;j++){var a=R()*6.28,d=r*.05*R()*2;E("circle",{cx:Math.cos(a)*d,cy:Math.sin(a)*d,r:r*.018,fill:"#ffd86b"},g)}}
+}
+for(var i=0;i<46;i++){
+ var x=R()*1000,y=R()*1000;
+ leaf(x,y,160+R()*140,R()*360);
+}
+var cols=5,rows=5,list=[];
+for(var cy=0;cy<rows+1;cy++)for(var cx=0;cx<cols+1;cx++){
+ list.push([cx*200-30+(cy%2)*100+R()*70-35,cy*190-20+R()*70-35,95+R()*55]);
+}
+list.sort(function(a,b){return a[2]-b[2]});
+list.forEach(function(p){peony(p[0],p[1],p[2])});
+for(var q=0;q<10;q++)peony(R()*1000,R()*1000,60+R()*40);
+for(var b=0;b<14;b++)E("circle",{cx:R()*1000,cy:R()*1000,r:10+R()*30,fill:"#fff",opacity:.07+R()*.08});
+
+function petalFall(){
+ var d=document.createElement("div");d.className="fall";
+ d.style.left=Math.random()*100+"vw";d.style.setProperty("--dx",(Math.random()*160-80)+"px");
+ d.style.setProperty("--r",(Math.random()*720)+"deg");
+ d.style.animationDuration=(6+Math.random()*6)+"s";d.style.transform="scale("+(.6+Math.random()*.9)+")";
+ document.body.appendChild(d);setTimeout(function(){d.remove()},13000);
+}
+setInterval(petalFall,700);
+})();
+</script>
+</body>
+</html>
